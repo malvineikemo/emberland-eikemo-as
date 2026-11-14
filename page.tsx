@@ -1,3 +1,113 @@
-import {CTA,PageIntro,services} from '../../components/content';
-export const metadata={title:'Tenester'};
-export default function Services(){return <><PageIntro title="Tenestene våre" text="Vi hjelper med drift og vedlikehald av bygg og uteområde. Her finn du meir om kva vi kan gjera for deg, både som enkeltoppdrag og gjennom faste avtalar."/><div className="wrap service-nav">{[['eigedomsdrift','Eigedomsdrift'],...services.map(s=>[s.id,s.title]),['vinter','Brøyting og strøing']].map(([id,title])=><a key={id} href={'#'+id}>{title}</a>)}</div><section className="wrap section service-feature" id="eigedomsdrift"><div><span className="label">BYGG OG VEDLIKEHALD</span><h2>Eigedomsdrift og vaktmestertenester</h2><p>Vi tek oss av tilsyn, småreparasjonar og praktisk vedlikehald. Du får hjelp til dei daglege oppgåvene rundt eigedomen, og ein kontakt å ringja når noko må ordnast.</p></div><div className="card"><ul className="checklist"><li>Tilsyn av bygg og uteområde</li><li>Småreparasjonar på dører, låsar og innreiing</li><li>Montering, demontering og vedlikehald</li><li>Maling og mindre snekkararbeid</li><li>Oppfølging av feil og behov for fagfolk</li></ul><a className="read-more" href="/fast-avtale">Sjå faste avtalar →</a></div></section><div className="wrap service-details">{services.map(s=><section className="service-row" id={s.id} key={s.id}><div className="service-text"><h2>{s.title}</h2><p>{s.text}</p><ul className="checklist">{s.items.map(i=><li key={i}>{i}</li>)}</ul><a className="read-more" href={'/kontakt?teneste='+encodeURIComponent(s.title)}>Spør oss om {s.title.toLowerCase()} →</a></div><figure><img src={'/images/'+s.image} alt={s.alt} loading="lazy"/><figcaption>Illustrasjonsbilete</figcaption></figure></section>)}</div><section className="wrap section" id="vinter"><div className="card winter"><div><h2>Brøyting og strøing</h2><p>Vi hjelper med vintervedlikehald av uteområde, innkøyrsler og parkeringsplassar. Ta kontakt for å avtala areal, tilkomst og behov før sesongen.</p></div><a href="/kontakt?teneste=Br%C3%B8yting%20og%20str%C3%B8ing" className="button">Avtal vintervedlikehald</a></div><details className="credits"><summary>Om bileta på sida</summary><p>Bileta illustrerer tenestene og viser ikkje oppdrag utførte av oss. Plentraktor: <a href="https://unsplash.com/photos/KXOSTcqGrOg">J Dean / Unsplash</a>. Minigravar: <a href="https://unsplash.com/photos/Nc7LkAcJiJM">Sergej / Unsplash</a>. Fasadevask: <a href="https://www.europris.no/artikler/hage/vedlikehold/vask-og-vedlikehold-av-vegg-og-vindu">Europris / iStock</a>. Takrenne: <a href="https://www.thelist.com/288664/the-household-areas-you-need-to-clean-before-winter-starts/">The List</a>.</p></details></section><CTA/></>}
+import { CTA, PageIntro, services } from "../../components/content";
+export const metadata = { title: "Tenester" };
+export default function Services() {
+  return (
+    <>
+      <PageIntro
+        title="Tenestene våre"
+        text="Vi hjelper med drift og vedlikehald av bygg og uteområde. Her finn du meir om kva vi kan gjera for deg, både som enkeltoppdrag og gjennom faste avtalar."
+      />
+      <div className="wrap service-nav">
+        {[
+          ["eigedomsdrift", "Eigedomsdrift"],
+          ...services.map((s) => [s.id, s.title]),
+          ["vinter", "Brøyting og strøing"],
+        ].map(([id, title]) => (
+          <a key={id} href={"#" + id}>
+            {title}
+          </a>
+        ))}
+      </div>
+      <section className="wrap section service-feature" id="eigedomsdrift">
+        <div>
+          <span className="label">BYGG OG VEDLIKEHALD</span>
+          <h2>Eigedomsdrift og vaktmestertenester</h2>
+          <p>
+            Vi tek oss av tilsyn, småreparasjonar og praktisk vedlikehald. Du
+            får hjelp til dei daglege oppgåvene rundt eigedomen, og ein kontakt
+            å ringja når noko må ordnast.
+          </p>
+        </div>
+        <div className="card">
+          <ul className="checklist">
+            <li>Tilsyn av bygg og uteområde</li>
+            <li>Småreparasjonar på dører, låsar og innreiing</li>
+            <li>Montering, demontering og vedlikehald</li>
+            <li>Maling og mindre snekkararbeid</li>
+            <li>Oppfølging av feil og behov for fagfolk</li>
+          </ul>
+          <a className="read-more" href="/fast-avtale">
+            Sjå faste avtalar →
+          </a>
+        </div>
+      </section>
+      <div className="wrap service-details">
+        {services.map((s) => (
+          <section className="service-row" id={s.id} key={s.id}>
+            <div className="service-text">
+              <h2>{s.title}</h2>
+              <p>{s.text}</p>
+              <ul className="checklist">
+                {s.items.map((i) => (
+                  <li key={i}>{i}</li>
+                ))}
+              </ul>
+              <a
+                className="read-more"
+                href={"/kontakt?teneste=" + encodeURIComponent(s.title)}
+              >
+                Spør oss om {s.title.toLowerCase()} →
+              </a>
+            </div>
+            <figure>
+              <img src={"/images/" + s.image} alt={s.alt} loading="lazy" />
+              <figcaption>Illustrasjonsbilete</figcaption>
+            </figure>
+          </section>
+        ))}
+      </div>
+      <section className="wrap section" id="vinter">
+        <div className="card winter">
+          <div>
+            <h2>Brøyting og strøing</h2>
+            <p>
+              Vi hjelper med vintervedlikehald av uteområde, innkøyrsler og
+              parkeringsplassar. Ta kontakt for å avtala areal, tilkomst og
+              behov før sesongen.
+            </p>
+          </div>
+          <a
+            href="/kontakt?teneste=Br%C3%B8yting%20og%20str%C3%B8ing"
+            className="button"
+          >
+            Avtal vintervedlikehald
+          </a>
+        </div>
+        <details className="credits">
+          <summary>Om bileta på sida</summary>
+          <p>
+            Bileta illustrerer tenestene og viser ikkje oppdrag utførte av oss.
+            Plentraktor:{" "}
+            <a href="https://unsplash.com/photos/KXOSTcqGrOg">
+              J Dean / Unsplash
+            </a>
+            . Minigravar:{" "}
+            <a href="https://unsplash.com/photos/Nc7LkAcJiJM">
+              Sergej / Unsplash
+            </a>
+            . Fasadevask:{" "}
+            <a href="https://www.europris.no/artikler/hage/vedlikehold/vask-og-vedlikehold-av-vegg-og-vindu">
+              Europris / iStock
+            </a>
+            . Takrenne:{" "}
+            <a href="https://www.thelist.com/288664/the-household-areas-you-need-to-clean-before-winter-starts/">
+              The List
+            </a>
+            .
+          </p>
+        </details>
+      </section>
+      <CTA />
+    </>
+  );
+}

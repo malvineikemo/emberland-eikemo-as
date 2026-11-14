@@ -1,4 +1,94 @@
-'use client';
-import {useState} from 'react';
-import {usePathname} from 'next/navigation';
-export default function SiteShell({children}:{children:React.ReactNode}){const [open,setOpen]=useState(false);const path=usePathname();return <><a href="#innhald" className="skip">Hopp til innhaldet</a><header><div className="nav-wrap"><a href="/" className="brand" aria-label="Emberland & Eikemo AS – heim"><img src="/logo.png" alt="Emberland & Eikemo AS"/></a><button className="menu-toggle" onClick={()=>setOpen(!open)} aria-expanded={open} aria-controls="nav">{open?'Lukk ✕':'Meny ☰'}</button><nav id="nav" className={open?'open':''}>{[['/','Heim'],['/tenester','Tenester'],['/fast-avtale','Fast avtale'],['/om-oss','Om oss'],['/kontakt','Kontakt']].map(([href,label])=><a key={href} href={href} aria-current={path===href?'page':undefined} onClick={()=>setOpen(false)}>{label}</a>)}<a className="button" href="/kontakt">Ta kontakt</a></nav></div></header><main id="innhald">{children}</main><footer><div className="wrap footer-grid"><div><strong>Emberland & Eikemo AS</strong></div><div><strong>Kontakt</strong><p><a href="mailto:hei@emberland-eikemo.no">hei@emberland-eikemo.no</a><br/><a href="tel:+4745457009">45 45 70 09</a><br/><a href="tel:+4748442180">48 44 21 80</a></p></div><div><strong>Snarvegar</strong><p><a href="/tenester">Tenestene våre</a><br/><a href="/om-oss">Om oss</a><br/><a href="https://www.facebook.com/ee.eiendomsservice/" target="_blank" rel="noreferrer">Facebook ↗</a></p></div></div><div className="wrap footer-bottom"><span>© {new Date().getFullYear()} Emberland & Eikemo AS</span><span>Org.nr. 935 780 470</span></div></footer></>}
+"use client";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
+export default function SiteShell({ children }: { children: React.ReactNode }) {
+  const [open, setOpen] = useState(false);
+  const path = usePathname();
+  return (
+    <>
+      <a href="#innhald" className="skip">
+        Hopp til innhaldet
+      </a>
+      <header>
+        <div className="nav-wrap">
+          <a
+            href="/"
+            className="brand"
+            aria-label="Emberland & Eikemo AS – heim"
+          >
+            <img src="/logo.png" alt="Emberland & Eikemo AS" />
+          </a>
+          <button
+            className="menu-toggle"
+            onClick={() => setOpen(!open)}
+            aria-expanded={open}
+            aria-controls="nav"
+          >
+            {open ? "Lukk ✕" : "Meny ☰"}
+          </button>
+          <nav id="nav" className={open ? "open" : ""}>
+            {[
+              ["/", "Heim"],
+              ["/tenester", "Tenester"],
+              ["/fast-avtale", "Fast avtale"],
+              ["/om-oss", "Om oss"],
+              ["/kontakt", "Kontakt"],
+            ].map(([href, label]) => (
+              <a
+                key={href}
+                href={href}
+                aria-current={path === href ? "page" : undefined}
+                onClick={() => setOpen(false)}
+              >
+                {label}
+              </a>
+            ))}
+            <a className="button" href="/kontakt">
+              Ta kontakt
+            </a>
+          </nav>
+        </div>
+      </header>
+      <main id="innhald">{children}</main>
+      <footer>
+        <div className="wrap footer-grid">
+          <div>
+            <strong>Emberland & Eikemo AS</strong>
+          </div>
+          <div>
+            <strong>Kontakt</strong>
+            <p>
+              <a href="mailto:hei@emberland-eikemo.no">
+                hei@emberland-eikemo.no
+              </a>
+              <br />
+              <a href="tel:+4745457009">45 45 70 09</a>
+              <br />
+              <a href="tel:+4748442180">48 44 21 80</a>
+            </p>
+          </div>
+          <div>
+            <strong>Snarvegar</strong>
+            <p>
+              <a href="/tenester">Tenestene våre</a>
+              <br />
+              <a href="/om-oss">Om oss</a>
+              <br />
+              <a
+                href="https://www.facebook.com/ee.eiendomsservice/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Facebook ↗
+              </a>
+            </p>
+          </div>
+        </div>
+        <div className="wrap footer-bottom">
+          <span>© {new Date().getFullYear()} Emberland & Eikemo AS</span>
+          <span>Org.nr. 935 780 470</span>
+        </div>
+      </footer>
+    </>
+  );
+}
